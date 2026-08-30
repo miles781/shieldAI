@@ -20,7 +20,9 @@ same as the TF-IDF pipeline.
 
 import json
 import os
+import sys
 
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import MODEL_DIR
 
 SEVERE_TERMS_PATH = os.path.join(MODEL_DIR, "severe_terms.json")
@@ -56,9 +58,6 @@ def contains_severe_term(clean_text_value):
 
 
 if __name__ == "__main__":
-    import sys
-
-    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     from src.preprocessing import clean_text
 
     examples = [
@@ -70,4 +69,4 @@ if __name__ == "__main__":
     ]
     for text in examples:
         flagged = contains_severe_term(clean_text(text))
-        print(f"{flagged}  {text!r}")
+        print(f"{flagged}  {text!r}") 
